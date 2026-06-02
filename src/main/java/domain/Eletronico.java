@@ -7,4 +7,12 @@ public class Eletronico extends Pedido {
         super(nome, tamanho);
     }
     
+    public String getNome() {
+        return nome;
+    }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+    
 }

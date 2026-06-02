@@ -7,4 +7,12 @@ public class Mobilia extends Pedido {
         super(nome, tamanho);
     }
     
+    public String getNome() {
+        return nome;
+    }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+    
 }
