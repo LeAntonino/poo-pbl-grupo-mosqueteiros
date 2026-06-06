@@ -2,26 +2,35 @@ package domain;
 
 public class Intinerario {
 
+    private final long id;
     private final Roteiro rot;
     private final Frota fot;
     private final Pedido ped;
+    private boolean status = false;
 
-    public Intinerario(Roteiro rot, Frota fot, Eletronico ped) {
+    public Intinerario(long id, Roteiro rot, Frota fot, Eletronico ped) {
+        this.id = id;
         this.rot = rot;
         this.fot = fot;
         this.ped = ped;
     }
 
-    public Intinerario(Roteiro rot, Frota fot, Mobilia ped) {
+    public Intinerario(long id, Roteiro rot, Frota fot, Mobilia ped) {
+        this.id = id;
         this.rot = rot;
         this.fot = fot;
         this.ped = ped;
     }
 
-    public Intinerario(Roteiro rot, Frota fot, Textil ped) {
+    public Intinerario(long id, Roteiro rot, Frota fot, Textil ped) {
+        this.id = id;
         this.rot = rot;
         this.fot = fot;
         this.ped = ped;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public Roteiro getRot() {
@@ -49,5 +58,15 @@ public class Intinerario {
         }
         
     }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
+    
 
 }

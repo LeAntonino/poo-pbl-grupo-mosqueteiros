@@ -1,7 +1,7 @@
 package domain;
 
 
-abstract class Pedido {
+public abstract class Pedido {
     
     final String nome;
     final int tamanho;
