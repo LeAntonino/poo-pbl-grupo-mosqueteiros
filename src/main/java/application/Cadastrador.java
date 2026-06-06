@@ -48,7 +48,14 @@ public class Cadastrador {
     }
     
     public void cadastrarFrota(Frota frota){
-        frotas.add(frota);
+        for(Frota i : frotas){
+            if(i.getNome().equals(frota.getNome())){
+                System.out.println("ERRO, FROTA JA CADASTRADA");
+                return;
+            }else{
+                frotas.add(frota);
+            }
+        }
     }
 
     public ArrayList<Frota> getFrotas() {
@@ -56,7 +63,15 @@ public class Cadastrador {
     }
     
     public void cadastrarRoteiros(Roteiro roteiro){
-        roteiros.add(roteiro);
+        for(Roteiro i : roteiros){
+            if(i.getNome().equals(roteiro.getNome())){
+                System.out.println("ERRO, LOCALIZACAO JA CADASTRADA");
+                return;
+            }else{
+                roteiros.add(roteiro);
+            }
+        }
+        
     }
 
     public ArrayList<Roteiro> getRoteiros() {
@@ -64,15 +79,36 @@ public class Cadastrador {
     }
     
     public void cadastrarPedido(Eletronico eletronico){
-        pedidos.add(eletronico);
+        for(Pedido i : pedidos){
+            if(eletronico.getId() == i.getId()){
+                System.out.println("ERRO, ID JA CADASTRADO");
+                return;
+            }else{
+                pedidos.add(eletronico);
+            }
+        }
     }
     
     public void cadastrarPedido(Mobilia mobilia){
-        pedidos.add(mobilia);
+        for(Pedido i : pedidos){
+            if(mobilia.getId() == i.getId()){
+                System.out.println("ERRO, ID JA CADASTRADO");
+                return;
+            }else{
+                pedidos.add(mobilia);
+            }
+        }
     }
     
     public void cadastrarPedido(Textil textil){
-        pedidos.add(textil);
+        for(Pedido i : pedidos){
+            if(textil.getId() == i.getId()){
+                System.out.println("ERRO, ID JA CADASTRADO");
+                return;
+            }else{
+                pedidos.add(textil);
+            }
+        }
     }
     
     public ArrayList<Pedido> getPedidos(){

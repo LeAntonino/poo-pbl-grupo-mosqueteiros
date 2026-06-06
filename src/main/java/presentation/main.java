@@ -1,7 +1,7 @@
 package presentation;
 
+import application.Cadastrador;
 import java.util.Scanner;
-
 import domain.Eletronico;
 import domain.Frota;
 import domain.Intinerario;
@@ -11,6 +11,8 @@ public class main {
 
     public static void main(String[] args) {
 
+        Cadastrador cad = Cadastrador.getInstance();
+        
         Scanner sc = new Scanner(System.in);
         int opcao;
 

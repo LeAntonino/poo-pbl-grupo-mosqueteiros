@@ -15,9 +15,9 @@ public class IntinerarioTest {
     public void constructIntinerario(){
         
         long id = 12345;
-        Eletronico eletronico = new Eletronico("testeEletronico", 1);
-        Textil textil = new Textil("testeTextil", 1);
-        Mobilia mobilia = new Mobilia("testeMobilia", 1);
+        Eletronico eletronico = new Eletronico(1000, "testeEletronico", 1);
+        Textil textil = new Textil(1001, "testeTextil", 1);
+        Mobilia mobilia = new Mobilia(1002, "testeMobilia", 1);
         Roteiro roteiro = new Roteiro("testeRoteiro", 1.0);
         Frota frota = new Frota("testFrota", 3);
         
