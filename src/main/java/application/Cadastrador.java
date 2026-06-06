@@ -1,10 +1,5 @@
 package application;
 
-<<<<<<< Updated upstream
-
-public class Cadastrador {
-    
-=======
 import domain.Eletronico;
 import domain.Frota;
 import domain.Intinerario;
@@ -84,5 +79,4 @@ public class Cadastrador {
         return pedidos;
     }
     
->>>>>>> Stashed changes
 }
