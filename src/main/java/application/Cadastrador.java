@@ -36,10 +36,10 @@ public class Cadastrador {
             if (i.getId() == intinerario.getId()){
                 System.out.println("ERRO, ID JA CADASTRADO");
                 return;
-            }else{
-                intinerarios.add(intinerario);
-            }
+            }            
         }
+        intinerarios.add(intinerario);
+        System.out.println("Intinerario cadastrado com sucesso");
         
     }
 
@@ -47,30 +47,51 @@ public class Cadastrador {
         return intinerarios;
     }
     
+    public Intinerario getIntinerarioById(long id) {
+        for(Intinerario i : intinerarios){
+            if(id == i.getId()){
+                return i;
+            }
+        }
+        System.out.println("Intinerario nao encontrado");
+        return null;
+    }
+    
     public void cadastrarFrota(Frota frota){
         for(Frota i : frotas){
             if(i.getNome().equals(frota.getNome())){
                 System.out.println("ERRO, FROTA JA CADASTRADA");
                 return;
-            }else{
-                frotas.add(frota);
             }
         }
+        frotas.add(frota);
+        System.out.println("Frota cadastrada com sucesso");
     }
 
     public ArrayList<Frota> getFrotas() {
         return frotas;
     }
-    
+
+
+    public Frota getFrotaByName(String nome) {
+        for(Frota f : frotas){
+            if(nome.equals(f.getNome())){
+                return f;
+            }
+        }
+        System.out.println("Frota nao encontrada");
+        return null;
+    }
+        
     public void cadastrarRoteiros(Roteiro roteiro){
         for(Roteiro i : roteiros){
             if(i.getNome().equals(roteiro.getNome())){
                 System.out.println("ERRO, LOCALIZACAO JA CADASTRADA");
                 return;
-            }else{
-                roteiros.add(roteiro);
             }
         }
+        roteiros.add(roteiro);
+        System.out.println("Roteiro cadastrado com sucesso");
         
     }
 
@@ -78,41 +99,80 @@ public class Cadastrador {
         return roteiros;
     }
     
+    public Roteiro getRoteiroByName(String nome){
+        for(Roteiro r : roteiros){
+            if(nome.equals(r.getNome())){
+                return r;
+            }
+        }
+        System.out.println("Roteiro nao encontrado");
+        return null;
+    }
+    
+    
     public void cadastrarPedido(Eletronico eletronico){
+        
+        if(eletronico.getTamanho() < 1 || eletronico.getTamanho() > 3){
+            System.out.println("ERRO, TAMANHO INVALIDO");
+            return;
+        }
+        
         for(Pedido i : pedidos){
             if(eletronico.getId() == i.getId()){
                 System.out.println("ERRO, ID JA CADASTRADO");
                 return;
-            }else{
-                pedidos.add(eletronico);
             }
         }
+        pedidos.add(eletronico);
+        System.out.println("Pedido cadastrado com sucesso");
     }
     
     public void cadastrarPedido(Mobilia mobilia){
+        
+        if(mobilia.getTamanho() < 1 || mobilia.getTamanho() > 3){
+            System.out.println("ERRO, TAMANHO INVALIDO");
+            return;
+        }
+        
         for(Pedido i : pedidos){
             if(mobilia.getId() == i.getId()){
                 System.out.println("ERRO, ID JA CADASTRADO");
                 return;
-            }else{
-                pedidos.add(mobilia);
             }
         }
+        pedidos.add(mobilia);
+        System.out.println("Pedido cadastrado com sucesso");
     }
     
     public void cadastrarPedido(Textil textil){
+        
+        if(textil.getTamanho() < 1 || textil.getTamanho() > 3){
+            System.out.println("ERRO, TAMANHO INVALIDO");
+            return;
+        }
+        
         for(Pedido i : pedidos){
             if(textil.getId() == i.getId()){
                 System.out.println("ERRO, ID JA CADASTRADO");
                 return;
-            }else{
-                pedidos.add(textil);
             }
         }
+        pedidos.add(textil);
+        System.out.println("Pedido cadastrado com sucesso");
     }
     
     public ArrayList<Pedido> getPedidos(){
         return pedidos;
     }
+    
+    public Pedido getPedidoById(long id){
+        for(Pedido p : pedidos){
+            if(id == p.getId()){
+                return p;
+            }
+        }
+        System.out.println("Pedido nao encontrado");
+        return null;
+    }    
     
 }
