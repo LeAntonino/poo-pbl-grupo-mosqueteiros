@@ -2,7 +2,7 @@ package domain;
 
 public class Frota {
     private final String nome;
-    private int pessoal;
+    private final int pessoal;
 
     public Frota(String nome, int pessoal) {
         this.nome = nome;
@@ -16,10 +16,5 @@ public class Frota {
     public int getPessoal() {
         return pessoal;
     }
-
-    public void setPessoal(int pessoal) {
-        this.pessoal = pessoal;
-    }
-    
-    
+   
 }
