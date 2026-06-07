@@ -65,6 +65,7 @@ public class Intinerario {
 
     public void setStatus(boolean status) {
         this.status = status;
+        System.out.println("status atualizado");
     }
     
     

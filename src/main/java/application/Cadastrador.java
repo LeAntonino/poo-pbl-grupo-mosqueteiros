@@ -47,6 +47,13 @@ public class Cadastrador {
         return intinerarios;
     }
     
+    public void listarIntinerarios(){
+        for(Intinerario inti : intinerarios){
+            System.out.println("ID: " + inti.getId() + " | ROTEIRO: " + inti.getRot().getNome() + " | FROTA: " + inti.getFot().getNome() + 
+                    " | PEDIDO: " + inti.getPed().getId() + " | STATUS DE ENTREGA: " + inti.getStatus());
+        }
+    }
+    
     public Intinerario getIntinerarioById(long id) {
         for(Intinerario i : intinerarios){
             if(id == i.getId()){
@@ -70,6 +77,12 @@ public class Cadastrador {
 
     public ArrayList<Frota> getFrotas() {
         return frotas;
+    }
+    
+    public void listarFrotas(){
+        for(Frota fro : frotas){
+            System.out.println("NOME: " + fro.getNome() + " | CAPACIDADE DE PESSOAL: " + fro.getPessoal());
+        }
     }
 
 
@@ -109,6 +122,11 @@ public class Cadastrador {
         return null;
     }
     
+    public void listarRoteiros(){
+        for(Roteiro rot : roteiros){
+            System.out.println("LOCALIZACAO: " + rot.getNome() + " | DISTANCIA DA SEDE: " + rot.getDistancia()+ "KM");
+        }
+    }
     
     public void cadastrarPedido(Eletronico eletronico){
         
@@ -165,14 +183,28 @@ public class Cadastrador {
         return pedidos;
     }
     
-    public Pedido getPedidoById(long id){
+    public Object getPedidoById(long id){
         for(Pedido p : pedidos){
             if(id == p.getId()){
-                return p;
+                if(p instanceof Eletronico eletronico){
+                    return eletronico;
+                }
+                if(p instanceof Textil textil){
+                    return textil;
+                }
+                if(p instanceof Mobilia mobilia){
+                    return mobilia;
+                }
             }
         }
         System.out.println("Pedido nao encontrado");
         return null;
-    }    
+    }
+
+    public void listarPedidos(){
+        for(Pedido p : pedidos){
+            System.out.println("ID: " + p.getId() + " | NOME: " + p.getNome() + " | TAMANHO: " + p.getTamanho() + " | TIPO: " + p.getClass().getSimpleName());
+        }
+    }
     
 }

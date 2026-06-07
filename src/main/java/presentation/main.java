@@ -38,27 +38,25 @@ public class main {
             switch (opcao) {
                     case 1 -> {
                         // Cadastrar Pedido
-                        long pedidoid;
+                        try{
                         System.out.println("Insira um ID numerico unico para o pedido");
-                        pedidoid = sc.nextLong();
+                        long pedidoid = sc.nextLong();
                     
                         String pedidonome;
                         System.out.println("Insira o nome do pedido");
                         pedidonome = sc.next();
                                    
-                        int peso;
                         System.out.println("Insira o tamanho do pedido: ");
                         System.out.println("1 - Pequeno (< 1kg)");
                         System.out.println("2 - Medio (1kg < | < 10kg)");
                         System.out.println("3 - Grande (> 10kg)");
-                        peso = sc.nextInt();
+                        int peso = sc.nextInt();
                     
-                        int pedidotipo;
                         System.out.println("Insira o tipo de pedido: ");
                         System.out.println("1 - Eletronico");
                         System.out.println("2 - Textil");
                         System.out.println("3 - Mobilia");
-                        pedidotipo = sc.nextInt();
+                        int pedidotipo = sc.nextInt();
                     
                     
                         switch (pedidotipo) {
@@ -76,59 +74,119 @@ public class main {
                             }
                             default -> System.out.println("opcao de pedido invalida");
                         }
+                        }catch(Exception e){
+                            System.out.println("valor invalido inserido");
+                        }
                     }
                   
                     case 2 -> {
                         // Cadastrar Frota
-                        String frotanome;
+                        try{
                         System.out.println("Insira um nome unico para a frota (sem espacos): ");
-                        frotanome = sc.next();
+                        String frotanome = sc.next();
                         
-                        int frotatamanho;
                         System.out.println("Insira o numero de trabalhadores suportado pela frota: ");
-                        frotatamanho = sc.nextInt();
+                        int frotatamanho = sc.nextInt();
                         
                         Frota fro = new Frota(frotanome, frotatamanho);
                         cad.cadastrarFrota(fro);
-                        
+                        }catch(Exception e){
+                            System.out.println("valor invalido inserido");
+                        }
                     }
 
                     case 3 -> {
                         // Cadastrar Roteiro
-                        String roteironome;
+                        try{
                         System.out.println("Insira um nome unico para a localizacao registrada (sem espacos): ");
-                        roteironome = sc.next();
+                        String roteironome = sc.next();
                         
-                        double distancia;
                         System.out.println("Insira em quilometros a distancia da localizacao para a sede: ");
-                        distancia = sc.nextDouble();
+                        double distancia = sc.nextDouble();
                         
                         Roteiro rot = new Roteiro(roteironome, distancia);
                         cad.cadastrarRoteiros(rot);
+                        }catch(Exception e){
+                            System.out.println("valor invalido inserido");
+                        }
                     }
 
                     case 4 -> {
                         // Listar Pedidos
+                        System.out.println("==== LISTA DE PEDIDOS ====");
+                        cad.listarPedidos();
+                        
                     }
 
                     case 5 -> {
                         // Listar Frotas
+                        System.out.println("==== LISTA DE FROTAS ====");
+                        cad.listarFrotas();
                     }
 
                     case 6 -> {
                         // Listar Roteiros
+                        System.out.println("==== LISTA DE ROTEIROS ====");
+                        cad.listarRoteiros();
                     }
 
                     case 7 -> {
-                        // Cadastrar Intinerario
+                        // Cadastrar intinerarios
+                        try{
+                            
+                            System.out.println("Insira um ID numerico unico para o intinerario: ");
+                            long idInti = sc.nextLong();
+                            
+                            System.out.println("Insira o nome do roteiro que pertencera a esse intinerario: ");
+                            String nomerot = sc.next();
+                            Roteiro rot = cad.getRoteiroByName(nomerot);
+                            if (rot == null){break;}
+                            
+                            System.out.println("Insira o nome da frota que pertencera a esse intinerario: ");
+                            String nomefro = sc.next();
+                            Frota fro = cad.getFrotaByName(nomefro);
+                            if (fro == null){break;}
+                            
+                            System.out.println("Insira o ID do pedido que sera entregue neste intinerario: ");
+                            long idped = sc.nextLong();
+                            var ped = cad.getPedidoById(idped);
+                            if (ped == null){break;}
+                            
+                            if(ped instanceof Eletronico eletronico){
+                            Intinerario inti = new Intinerario(idInti, rot, fro, eletronico);
+                            cad.cadastrarIntinerario(inti);
+                            }
+                            if(ped instanceof Textil textil){
+                            Intinerario inti = new Intinerario(idInti, rot, fro, textil);
+                            cad.cadastrarIntinerario(inti);
+                            }
+                            if(ped instanceof Mobilia mobilia){
+                            Intinerario inti = new Intinerario(idInti, rot, fro, mobilia);
+                            cad.cadastrarIntinerario(inti);
+                            }                  
+                            
+                        }catch(Exception e){
+                            System.out.println("valor invalido inserido");
+                        }
                     }
 
                     case 8 -> {
                         // Listar Intinerarios
+                        System.out.println("==== LISTA DE INTINERARIOS ====");
+                        cad.listarIntinerarios();
                     }
                 
                     case 9 -> {
                         // Alterar status de Intinerario
+                        try{
+                            long idinti;
+                            System.out.println("Insira o ID do Intinerario");
+                            idinti = sc.nextLong();
+                            
+                            cad.getIntinerarioById(idinti).setStatus(true);
+                        }catch(Exception e){
+                            
+                        }
                     }
                     
                     case 10 -> {
